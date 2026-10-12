@@ -1,4 +1,4 @@
-# Swift Weather CLI
+# Swift Weather CLI 
 
 A command-line weather application written in Swift that fetches current weather information for any city.
 
@@ -50,7 +50,7 @@ swift run swift-weather --city Paris --unit C
 
 ## API
 
-This CLI uses the WeatherAPI.com service. To use your own API key:
+This CLI uses the WeatherAPI.com service. To use your own API key::
 
 1. Sign up at https://www.weatherapi.com/
 2. Replace the `apiKey` variable in `Sources/main.swift`
