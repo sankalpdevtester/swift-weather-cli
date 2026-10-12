@@ -1,80 +1,96 @@
 # Swift Weather CLI
-[![Swift](https://img.shields.io/badge/Swift-5.7-orange.svg)](https://swift.org/)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-## What it does
-The Swift Weather CLI is a command-line tool for retrieving and displaying current weather conditions. It utilizes the OpenWeatherMap API to provide users with accurate and up-to-date weather information. This tool is designed for individuals who want to quickly check the weather from their terminal.
+A command-line weather application written in Swift that fetches current weather information for any city.
 
 ## Features
-* Current weather display
-* 5-day forecast
-* Location-based weather
-* Unit conversion (Celsius/Fahrenheit)
-* Error handling for API requests
+
+- 🌡️ Real-time temperature data
+- ☁️ Current weather conditions
+- 💨 Wind speed and humidity
+- 🌍 Support for cities worldwide
+- 📊 Clean, formatted output
+- ⚙️ Celsius or Fahrenheit units
 
 ## Requirements
-* Swift 5.7
-* Swift Package Manager (SPM) 5.7
-* OpenWeatherMap API key
+
+- Swift 5.5+
+- macOS 12+ or Linux with Swift installed
 
 ## Installation
-To install the Swift Weather CLI, navigate to the project directory and run the following command:
+
+1. Clone the repository
+2. Build the project:
 ```bash
-swift package resolve
+swift build -c release
 ```
-This will resolve the dependencies required by the project.
+
+3. Run the executable:
+```bash
+./.build/release/swift-weather
+```
 
 ## Usage
-To run the Swift Weather CLI, use the following command:
+
+Basic usage:
 ```bash
-swift run
+swift run swift-weather London
 ```
-You can also specify the location and units using the following commands:
+
+With options:
 ```bash
-swift run --location London
-swift run --units celsius
-```
-Expected output:
-```
-Current weather in London:
-Temperature: 22°C
-Conditions: Sunny
-Humidity: 60%
-Wind Speed: 10 km/h
-
-5-day forecast:
-Day 1: Sunny, 22°C
-Day 2: Cloudy, 20°C
-Day 3: Rainy, 18°C
-Day 4: Sunny, 22°C
-Day 5: Cloudy, 20°C
+swift run swift-weather -c "New York" -u F
+swift run swift-weather --city Paris --unit C
 ```
 
-## Environment Variables
-| Variable | Description |
-| --- | --- |
-| OPENWEATHERMAP_API_KEY | Your OpenWeatherMap API key |
-| LOCATION | The location for which to retrieve the weather (default: current location) |
-| UNITS | The units to use for temperature (celsius or fahrenheit, default: celsius) |
+### Options
 
-## Project Structure
+- `-c, --city CITY` - City name (required)
+- `-u, --unit UNIT` - Temperature unit: C (Celsius) or F (Fahrenheit) [default: C]
+- `-h, --help` - Show help message
+
+## API
+
+This CLI uses the WeatherAPI.com service. To use your own API key:
+
+1. Sign up at https://www.weatherapi.com/
+2. Replace the `apiKey` variable in `Sources/main.swift`
+
+## Example Output
+
 ```
-SwiftWeatherCLI
-├── Package.swift
-├── Sources
-│   ├── main.swift
-│   ├── WeatherAPI.swift
-│   ├── LocationManager.swift
-│   └── UnitConverter.swift
-├── Tests
-│   ├── WeatherAPITests.swift
-│   ├── LocationManagerTests.swift
-│   └── UnitConverterTests.swift
-└── README.md
+==================================================
+🌤️  WEATHER INFORMATION
+==================================================
+
+📍 Location:
+   London, City of London, Greater London
+   United Kingdom
+   Local Time: 2025-01-15 14:30
+
+🌡️  Temperature:
+   12.0°C
+   Feels like: 10.5°C
+
+☁️  Conditions:
+   Partly cloudy
+   Humidity: 76%
+   Wind: 15.8 km/h
+
+==================================================
 ```
 
-## Contributing
-To contribute to the Swift Weather CLI, please fork the repository and submit a pull request. Make sure to include tests for any new features or bug fixes.
+## Development
+
+Run in development mode:
+```bash
+swift run swift-weather London
+```
+
+Run tests:
+```bash
+swift test
+```
 
 ## License
-The Swift Weather CLI is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+MIT License
